@@ -1,18 +1,13 @@
 package main
 
 import (
-	// "fmt"
-	// "io"
-	// "strings"
-	"log"
+	"encoding/csv"
 	"os"
-	// "encoding/csv"
 )
 
-func csvread(fileName string) string{
-	file, err := os.ReadFile(fileName)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return string(file)
+func csvread(fileName string) [][]string {
+	tasks, _ := os.Open(fileName)
+	task, err := csv.NewReader(tasks).ReadAll()
+	if err != nil {}
+	return task
 }
