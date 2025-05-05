@@ -1,0 +1,6 @@
+Task ID,Title,Description,Priority,Status,Due Date,Assigned To,Created Date,Tags,Estimated Hours,Completion %
+1,Project kickoff meeting,Schedule and prepare agenda for project kickoff,High,Not Started,2025-05-15,Jane Doe,2025-05-05,Meeting;Planning,2,0
+2,Research competitors,Analyze top 3 competitors in the market,Medium,In Progress,2025-05-20,John Smith,2025-05-05,Research;Strategy,8,25
+3,Update website content,Refresh homepage copy and product descriptions,Low,Not Started,2025-05-30,Jane Doe,2025-05-05,Content;Website,4,0
+4,Quarterly report preparation,Compile Q1 metrics and create performance summary,High,Not Started,2025-05-25,John Smith,2025-05-05,Reporting;Finance,6,0
+5,Client follow-up calls,Contact clients who haven't renewed in 60 days,Medium,Not Started,2025-05-12,Sarah Johnson,2025-05-05,Sales;Client,3,0
