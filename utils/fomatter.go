@@ -1,11 +1,11 @@
-package main
+package utils
 
 import (
 	"github.com/markkurossi/tabulate"
 	"os"
 )
 
-func formatTab(data [][]string){
+func FormatTab(data [][]string){
 	tab := tabulate.New(tabulate.Github)
 	for index, _ := range data[0]{
 		tab.Header(data[0][index]).SetAlign(tabulate.MR)
