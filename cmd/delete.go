@@ -4,6 +4,7 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/rajin4463/GO_CLI_TASK_TRACKER/utils"
@@ -22,7 +23,19 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		id, _ := strconv.Atoi(args[0])
-		utils.CsvDel("tasks.csv",id)
+		if id > 0 {
+			data := utils.CsvRead("tasks.csv")
+			var NewData [][]string
+			for i := 1; i < len(data); i++ { // Start from 1 to skip the header
+				Listid, _ := strconv.Atoi(data[i][0])
+				if Listid != id {
+					NewData = append(NewData, data[i])
+				}
+			}
+			fmt.Println(NewData)
+		} else {
+			fmt.Println("Task ID not provided")
+		}
 	},
 }
 
