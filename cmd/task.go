@@ -5,7 +5,6 @@ package cmd
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 	"github.com/rajin4463/GO_CLI_TASK_TRACKER/utils"
 	"github.com/spf13/cobra"
@@ -27,21 +26,13 @@ var taskCmd = &cobra.Command{
 		due, _ := cmd.Flags().GetString("due")
 		assign, _ := cmd.Flags().GetString("assign")
 
-		// Append the task to the CSV file
-		file, err := os.OpenFile("tasks.csv", os.O_APPEND|os.O_WRONLY, 0644)
-		if err != nil {
-			fmt.Println("Error opening tasks.csv:", err)
-			return
-		}
-		defer file.Close()
+		newTask := []string{strconv.Itoa(getNextTaskID()), title, priority, status, due, assign}
+
+		data := utils.CsvRead("tasks.csv")
+		task := append(data[1:], newTask)
 
 		// Write the new task to the file
-		newTask := fmt.Sprintf("%d,%s,%s,%s,%s,%s \n", getNextTaskID(), title, priority, status, due, assign)
-		if _, err := file.WriteString(newTask); err != nil {
-			fmt.Println("Error writing to tasks.csv:", err)
-			return
-		}
-
+		utils.CsvWrite("tasks.csv", task)
 		fmt.Println("Task added successfully!")
 	},
 }

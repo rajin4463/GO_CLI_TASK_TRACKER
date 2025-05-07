@@ -74,13 +74,5 @@ func CsvDel(fileName string) {
 	}
 	defer csvFile.Close()
 
-	// Write only the header back to the file
-	csvwriter := csv.NewWriter(csvFile)
-	err = csvwriter.WriteAll(headerOnly)
-	if err != nil {
-		fmt.Errorf("error writing CSV data: %s", err)
-		return
-	}
-
-	csvwriter.Flush()
+	CsvWrite("tasks.csv",headerOnly)
 }
