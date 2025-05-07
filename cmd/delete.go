@@ -32,7 +32,7 @@ to quickly create a Cobra application.`,
 					NewData = append(NewData, data[i])
 				}
 			}
-			fmt.Println(NewData)
+			utils.CsvWrite("tasks.csv",NewData)
 		} else {
 			fmt.Println("Task ID not provided")
 		}
