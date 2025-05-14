@@ -78,13 +78,13 @@ func CsvDel(fileName string) {
 	CsvWrite("tasks.csv", headerOnly)
 }
 
-func CsvMod(fileName string, id int, status string, due string, assigned string) {
+func CsvMod(fileName string, id int, priority string, status string, due string, assigned string) {
 	data := CsvRead(fileName)
 	if id > 0 {
 		for i := range data {
 			taskID, _ := strconv.Atoi(data[i][0])
 			if taskID == id {
-				fmt.Println(data[i][0])
+				fmt.Println(data[i])
 			}
 		}
 	}
