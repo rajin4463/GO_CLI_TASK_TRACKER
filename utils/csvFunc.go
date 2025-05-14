@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 )
 
 func CsvRead(fileName string) [][]string {
@@ -74,5 +75,17 @@ func CsvDel(fileName string) {
 	}
 	defer csvFile.Close()
 
-	CsvWrite("tasks.csv",headerOnly)
+	CsvWrite("tasks.csv", headerOnly)
+}
+
+func CsvMod(fileName string, id int, status string, due string, assigned string) {
+	data := CsvRead(fileName)
+	if id > 0 {
+		for i := range data {
+			taskID, _ := strconv.Atoi(data[i][0])
+			if taskID == id {
+				fmt.Println(data[i][0])
+			}
+		}
+	}
 }
