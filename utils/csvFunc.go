@@ -84,7 +84,8 @@ func CsvMod(fileName string, id int, priority string, status string, due string,
 		for i := range data {
 			taskID, _ := strconv.Atoi(data[i][0])
 			if taskID == id {
-				fmt.Println(data[i])
+				fmt.Println(data[i][0])
+				fmt.Println(priority, status, due, assigned)
 			}
 		}
 	}
