@@ -35,8 +35,8 @@ var modCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(modCmd)
 
-	modCmd.Flags().StringP("priority", "p", "Medium", "Modify Priority of Task")
-	modCmd.Flags().StringP("status", "s", "Not Started", "Modifiy Status of Task")
+	modCmd.Flags().StringP("priority", "p", " ", "Modify Priority of Task")
+	modCmd.Flags().StringP("status", "s", " ", "Status of Task")
 	modCmd.Flags().StringP("due", "d", " ", "Modify due date of Task")
 	modCmd.Flags().StringP("assigned", "a", " ", "Modify task assignment")
 }

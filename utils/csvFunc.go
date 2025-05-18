@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func CsvRead(fileName string) [][]string {
@@ -80,13 +81,31 @@ func CsvDel(fileName string) {
 
 func CsvMod(fileName string, id int, priority string, status string, due string, assigned string) {
 	data := CsvRead(fileName)
+	params := map[string]string{
+		"2": priority,
+		"3": status,
+		"4": due,
+		"5": assigned,
+	}
+	var modTask []string
 	if id > 0 {
 		for i := range data {
 			taskID, _ := strconv.Atoi(data[i][0])
 			if taskID == id {
-				fmt.Println(data[i][0])
-				fmt.Println(priority, status, due, assigned)
+				modTask = make([]string, len(data[i]))
+				copy(modTask, data[i])
+				for k, v := range params {
+					if s := strings.TrimSpace(v); s != "" {
+						Kint, _ := strconv.Atoi(k)
+						modTask[Kint] = v
+					}
+				}
 			}
 		}
+		newData := make([][]string, len(data)-1)
+		copy(newData, data[1:])
+		newData[(id - 1)] = modTask
+		CsvWrite("tasks.csv", newData)
+		fmt.Println("Tasks modified successfuly!")
 	}
 }
